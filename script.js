@@ -53,8 +53,13 @@ document.querySelector(".check").addEventListener("click", function () {
     document.querySelector(".maintitle").textContent = "You guessed it right !";
     document.querySelector(".number").style.width = "30rem";
     stateVictory = true;
-    highScore = life.length;
-    document.querySelector(".highscore").textContent = String(highScore);
+    if (highScore < life.length) {
+      highScore = life.length;
+      document.querySelector(".highscore").textContent = "";
+      for (let index = 0; index < life.length; index++) {
+        document.querySelector(".highscore").textContent += life[index];
+      }
+    }
     // guess higher than input
   } else if (userInput > secretNumber) {
     if (life.length > 0) {
